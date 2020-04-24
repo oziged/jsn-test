@@ -74,11 +74,12 @@ export default {
       Object.assign(this.$data, this.$options.data())
     },
 
-    createHero() {
-      this.$store.dispatch(
+    async createHero() {
+      let id = await this.$store.dispatch(
         'heroes/createHero',
         this.heroForCreate
       )
+      this.$router.push(`/heroes/${id}`)
     },
 
     fileInputChange(files) {
