@@ -4,7 +4,7 @@
       class="dropdown__title"
       @click="titleClick"
     >
-      <span>{{ options.default }}</span>
+      <span>{{ updatedValue || options.default }}</span>
       <AppSvgIcon
         type="arrow-down"
         :style="{transform: !isOpened ? 'rotate(90deg)' : ''}"
@@ -19,7 +19,7 @@
         class="dropdown__item"
         v-for="(item, index) in options.items"
         :key="index"
-        @click="dropdownItemClick(item[0])"
+        @click="dropdownItemClick(item)"
       >
         {{ item[1] }}
       </div>
@@ -40,7 +40,8 @@ export default {
 
   data() {
     return {
-      isOpened: false
+      isOpened: false,
+      updatedValue: null
     }
   },
 
@@ -50,8 +51,9 @@ export default {
       this.toggleDropdown()
     },
 
-    dropdownItemClick(value) {
-      this.$emit('change', value)
+    dropdownItemClick(item) {
+      this.$emit('change', item[0])
+      this.updatedValue = item[1]
       this.closeDropDown()
     },
 
