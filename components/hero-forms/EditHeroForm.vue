@@ -37,7 +37,7 @@
       />
 
       <client-only>
-        <swiper class="edit-hero-form__slider" v-if="hero">
+        <swiper class="edit-hero-form__slider" v-if="hero" :options="swiperOptions">
           <swiper-slide
             class="edit-hero-form__slide"
             v-for="(src, index) in heroForUpdate.images"
@@ -55,6 +55,7 @@
               delete
             </span>
           </swiper-slide>
+          <div class="swiper-pagination" slot="pagination"></div>
         </swiper>
       </client-only>
 
@@ -75,8 +76,13 @@ export default {
         catch_phrase: '',
 
         images: []
-      }
+      },
 
+      swiperOptions: {
+        pagination: {
+          el: '.swiper-pagination'
+        }
+      }
     }
   },
 
@@ -147,7 +153,7 @@ export default {
 
     &__slide-del {
       position: absolute;
-      bottom: 10px;
+      top: 20px;
       left: 50%;
       transform: translateX(-50%);
       text-transform: uppercase;

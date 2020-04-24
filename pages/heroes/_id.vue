@@ -2,7 +2,7 @@
   <div class="heroes-item">
     <div class="heroes-item__left">
         <client-only>
-          <swiper class="heroes-item__slider">
+          <swiper class="heroes-item__slider" :options="swiperOptions">
             <swiper-slide
               class="heroes-item__slide"
               v-for="(src, index) in hero.images"
@@ -14,6 +14,7 @@
                 class="heroes-item__slider-img"
               >
             </swiper-slide>
+            <div class="swiper-pagination" slot="pagination"></div>
           </swiper>
         </client-only>
 
@@ -44,6 +45,17 @@
 
 <script>
 export default {
+  data() {
+    return {
+      swiperOptions: {
+        pagination: {
+          el: '.swiper-pagination'
+        }
+      }
+    }
+  },
+
+
   computed: {
     hero() {
      return this.$store.state.heroes.items.find(item => item.id == this.$route.params.id) || {}
