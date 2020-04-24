@@ -41,7 +41,7 @@
         :rules="baseRules"
       />
 
-      <v-btn class="mr-4" @click="createButtonClick">Create Hero</v-btn>
+      <v-btn class="mr-4 create-hero-form__create-btn" @click="createButtonClick">Create Hero</v-btn>
     </v-form>
   </modal>
 </template>
@@ -94,6 +94,11 @@ export default {
   .create-hero-form {
     font-family: Roboto;
     padding: 30px;
+
+    &__create-btn {
+      display: block;
+      margin: 0 auto;
+    }
   }
 
   // vuetify fix

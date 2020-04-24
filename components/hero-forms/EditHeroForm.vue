@@ -58,7 +58,7 @@
         </swiper>
       </client-only>
 
-      <v-btn class="mr-4 edit-hero-form__del-btn" @click="updateButtonClick">Update Hero</v-btn>
+      <v-btn class="mr-4 edit-hero-form__upd-btn" @click="updateButtonClick">Update Hero</v-btn>
     </v-form>
   </modal>
 </template>
@@ -104,6 +104,7 @@ export default {
 
     updateHero() {
       this.$store.dispatch('heroes/updateHero', {heroId: this.hero.id, newHero: this.heroForUpdate})
+      this.$modal.hide('edit-hero-form')
     },
 
     updateButtonClick() {
@@ -156,7 +157,7 @@ export default {
       box-shadow: 0 0 4px #0000006e;
     }
 
-    &__del-btn {
+    &__upd-btn {
       margin: 0 auto;
       display: block;
     }

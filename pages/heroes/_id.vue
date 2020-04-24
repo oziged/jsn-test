@@ -46,7 +46,7 @@
 export default {
   computed: {
     hero() {
-     return this.$store.state.heroes.items.find(item => item.id == this.$route.params.id)
+     return this.$store.state.heroes.items.find(item => item.id == this.$route.params.id) || {}
     },
 
     heroForDisplay() {
@@ -64,6 +64,7 @@ export default {
 
     deleteButtonClick() {
       this.deleteHero()
+      this.$store.dispatch('heroes/updateState', {key: 'currentPage', value: 0})
       this.$router.push('/heroes')
     },
 

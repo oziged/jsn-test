@@ -10,9 +10,20 @@
 <script>
 import CreateHeroForm from '@/components/hero-forms/CreateHeroForm'
 import EditHeroForm from '@/components/hero-forms/EditHeroForm'
+import { generateHeroes } from '@/utils/faker'
 
 export default {
   components: {CreateHeroForm, EditHeroForm},
+
+  created() {
+    this.fillStore()
+  },
+
+  methods: {
+    fillStore() {
+      this.$store.dispatch('heroes/updateState', {key: 'items', value: generateHeroes()})
+    }
+  },
 }
 </script>
 

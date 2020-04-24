@@ -50,7 +50,8 @@ export default {
 
   computed: {
     lastPage() {
-      return Math.ceil((this.items.length-1) / this.perPage) - 1
+      console.log(this.items.length-1)
+      return Math.ceil((this.items.length) / this.perPage) - 1
     },
 
     tempPages() {
