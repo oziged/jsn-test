@@ -1,0 +1,13 @@
+.btn-default {
+  padding: 10px 20px;
+  text-transform: uppercase;
+  box-shadow: 0 0 4px #00000036;
+  border-radius: 10px;
+  transition: .2s;
+  cursor: pointer;
+  display: inline-block;
+
+  &:hover {
+    background: #f0f8ff85;
+  }
+}
